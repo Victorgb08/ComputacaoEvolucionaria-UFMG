@@ -1,0 +1,34 @@
+População Inicial:
+Indivíduo: 1011001100010010101100, Fitness: 2950, Peso Total: 2050
+Indivíduo: 0100011001001010011000, Fitness: 2650, Peso Total: 1380
+Indivíduo: 0111100001000101111110, Fitness: 3950, Peso Total: 2190
+Indivíduo: 0100111101011110010111, Fitness: 4350, Peso Total: 2710
+Indivíduo: 0011100110100001010011, Fitness: 2850, Peso Total: 1620
+Indivíduo: 0110010000100110000111, Fitness: 3000, Peso Total: 1560
+Indivíduo: 1101111011100011011111, Fitness: 4650, Peso Total: 2640
+Indivíduo: 1111101010000011100100, Fitness: 3350, Peso Total: 2050
+Indivíduo: 0011110110001101111111, Fitness: 4500, Peso Total: 2610
+Indivíduo: 1011001001000100010111, Fitness: 3150, Peso Total: 1870
+Indivíduo: 1101000110010000101001, Fitness: 2400, Peso Total: 1890
+Indivíduo: 1010111011010110110010, Fitness: 3850, Peso Total: 2520
+Indivíduo: 0011110001000000001100, Fitness: 2300, Peso Total: 940
+Indivíduo: 1110001001110101100111, Fitness: 4150, Peso Total: 2520
+Indivíduo: 0000111111001100010101, Fitness: 3300, Peso Total: 1870
+
+Última Geração:
+Indivíduo: 1011011011101101111110, Fitness: 5050, Peso Total: 2630
+Indivíduo: 1011011011101101111110, Fitness: 5050, Peso Total: 2630
+Indivíduo: 1011011011101101111110, Fitness: 5050, Peso Total: 2630
+Indivíduo: 1011011011101101111110, Fitness: 5050, Peso Total: 2630
+Indivíduo: 1011011011101101111110, Fitness: 5050, Peso Total: 2630
+Indivíduo: 1011011011101101111110, Fitness: 5050, Peso Total: 2630
+Indivíduo: 1011011011101101111110, Fitness: 5050, Peso Total: 2630
+Indivíduo: 1011011011101101111110, Fitness: 5050, Peso Total: 2630
+Indivíduo: 1011011011101101111110, Fitness: 5050, Peso Total: 2630
+Indivíduo: 1011011011101101111110, Fitness: 5050, Peso Total: 2630
+Indivíduo: 1011011011101101111110, Fitness: 5050, Peso Total: 2630
+Indivíduo: 1011011011101101111110, Fitness: 5050, Peso Total: 2630
+Indivíduo: 1011011011101101111110, Fitness: 5050, Peso Total: 2630
+Indivíduo: 1011011011101101111110, Fitness: 5050, Peso Total: 2630
+Indivíduo: 1011011011101101111110, Fitness: 5050, Peso Total: 2630
+Indivíduo: 1011011011101101111110, Fitness: 5050, Peso Total: 2630
