@@ -1,22 +1,23 @@
 import random
-import matplotlib.pyplot as plt
+import time
 
 # Variáveis globais
-TAMANHO_POPULACAO = 100
+TAMANHO_POPULACAO = [100,100,100]
 GERACOES = 100
-TAXA_MUTACAO = 0.05
+TAXA_MUTACAO = [0.03,0.03,0.03]
 
 class AlgoritmoGenetico:
-    def __init__(self, data, tamanho_populacao=TAMANHO_POPULACAO, peso_maximo=3000, taxa_mutacao=TAXA_MUTACAO, geracoes=GERACOES):
+    def __init__(self, data, num_itens,TAXA_MUTACAO, TAMANHO_POPULACAO, peso_maximo=3000, geracoes=GERACOES):
         self.data = data
-        self.tamanho_populacao = tamanho_populacao
+        self.num_itens = num_itens
+        self.tamanho_populacao = TAMANHO_POPULACAO
         self.peso_maximo = peso_maximo
-        self.taxa_mutacao = taxa_mutacao
+        self.taxa_mutacao = TAXA_MUTACAO
         self.geracoes = geracoes
         self.populacao_inicial = self.gerar_populacao()
 
     def gerar_individuo(self):
-        return ''.join(random.choice('01') for _ in range(22))
+        return ''.join(random.choice('01') for _ in range(self.num_itens))
 
     def gerar_populacao(self):
         return [self.gerar_individuo() for _ in range(self.tamanho_populacao)]
@@ -76,7 +77,7 @@ class AlgoritmoGenetico:
 
         for i in range(0, tamanho_populacao, 2):
             pai1, pai2 = populacao[i][0], populacao[i+1][0]
-            ponto_crossover = random.randint(1, 21)
+            ponto_crossover = random.randint(1, self.num_itens - 1)
             
             filho1, filho2 = self.crossover(pai1, pai2, ponto_crossover)
             
@@ -89,9 +90,11 @@ class AlgoritmoGenetico:
         return nova_geracao
 
     def executar(self):
+        # Marca o tempo de início
+        tempo_inicio = time.time()
+
         # Lista para armazenar o fitness total de cada geração
         fitness_total_por_geracao = []
-        fitness_maximo_por_geracao = []
         fitness_maximo = 0
         melhor_individuo = ""
         geracao_melhor_individuo = 0
@@ -109,8 +112,6 @@ class AlgoritmoGenetico:
                 fitness_maximo = fitness
                 melhor_individuo = individuo
                 geracao_melhor_individuo = 0
-
-        fitness_maximo_por_geracao.append(fitness_maximo)
 
         # Executa o procedimento por 1000 gerações
         for geracao in range(1, self.geracoes + 1):
@@ -134,19 +135,18 @@ class AlgoritmoGenetico:
                     melhor_individuo = individuo
                     geracao_melhor_individuo = geracao
 
-            fitness_maximo_por_geracao.append(fitness_maximo)
+        # Marca o tempo de fim
+        tempo_fim = time.time()
 
-        # Exibe o fitness máximo encontrado e a sequência de bits correspondente
+        # Calcula o tempo de execução
+        tempo_execucao = tempo_fim - tempo_inicio
+
+        # Exibe o fitness máximo encontrado, a sequência de bits correspondente e o tempo de execução
         print(f"\nFitness Máximo Encontrado: {fitness_maximo}")
-        print(f"Melhor Individuo: {melhor_individuo}")
-        print(f"Geracao do Melhor Individuo: {geracao_melhor_individuo}")
-
-        # Plotar o gráfico do fitness máximo por geração
-        plt.plot(range(self.geracoes + 1), fitness_maximo_por_geracao)
-        plt.xlabel('Geração')
-        plt.ylabel('Fitness Máximo')
-        plt.title('Fitness Máximo por Geração')
-        plt.show()
+        # print(f"Melhor Individuo: {melhor_individuo}")
+        # print(f"Geracao do Melhor Individuo: {geracao_melhor_individuo}")
+        print(f"Tempo de Execução: {tempo_execucao:.2f} segundos")
+        print(f'Número de itens: {self.num_itens}')
 
 # Dados de entrada
 data = {
@@ -159,6 +159,9 @@ data = {
               150, 200]
 }
 
-# Executa o algoritmo genético
-algoritmo_genetico = AlgoritmoGenetico(data)
-algoritmo_genetico.executar()
+num_itens = [10,15,22]
+
+for j in range(0,3):
+    for i in range(0,3):
+        algoritmo_genetico = AlgoritmoGenetico(data, num_itens[i],TAXA_MUTACAO[i],TAMANHO_POPULACAO[i])
+        algoritmo_genetico.executar()
