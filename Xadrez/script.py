@@ -14,16 +14,18 @@ def fitness(board):
     return conflicts
 
 # Seleção por torneio
-def tournament_selection(population, k=3):
-    selected = random.sample(population, k)
-    selected.sort(key=lambda x: fitness(x))
-    return selected[0]
+def tournament_selection(population, p=0.75):
+    selected = random.sample(population, 2)
+    if random.random() < p:
+        return min(selected, key=lambda x: fitness(x))
+    else:
+        return max(selected, key=lambda x: fitness(x))
 
 # Cruzamento
 def crossover(parent1, parent2):
     crossover_point = random.randint(0, 7)
     child = parent1[:crossover_point] + parent2[crossover_point:]
-    print(f"Crossover:\n  Parent1: {parent1}\n  Parent2: {parent2}\n  Point: {crossover_point}\n  Child: {child}")
+    # print(f"Crossover:\n  Parent1: {parent1}\n  Parent2: {parent2}\n  Point: {crossover_point}\n  Child: {child}")
     return child
 
 # Mutação
@@ -32,19 +34,19 @@ def mutate(board):
     if random.random() < 0.05:  # Taxa de mutação de 5%
         i = random.randint(0, 7)
         board[i] = random.randint(0, 7)
-    print(f"Mutate:\n  Original: {original_board}\n  Mutated: {board}")
+    # print(f"Mutate:\n  Original: {original_board}\n  Mutated: {board}")
     return board
 
 # Algoritmo Genético
 def genetic_algorithm():
-    population_size = 100
+    population_size = 1000
     generations = 1000
     population = [create_board() for _ in range(population_size)]
 
     for generation in range(generations):
         population.sort(key=lambda x: fitness(x))
         current_fitness = fitness(population[0])
-        print(f"Geração {generation}: Conflitos = {current_fitness}")
+        print(f"Geração {generation}, Conflito {current_fitness}")
         if current_fitness == 0:
             return population[0]
 
