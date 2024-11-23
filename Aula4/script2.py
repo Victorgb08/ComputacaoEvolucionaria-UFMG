@@ -2,7 +2,7 @@ import random
 import time
 
 # Variáveis globais
-TAMANHO_POPULACAO = [100,100,100]
+TAMANHO_POPULACAO = [10,100,200]
 GERACOES = 100
 TAXA_MUTACAO = [0.03,0.03,0.03]
 
@@ -146,7 +146,7 @@ class AlgoritmoGenetico:
         # print(f"Melhor Individuo: {melhor_individuo}")
         # print(f"Geracao do Melhor Individuo: {geracao_melhor_individuo}")
         print(f"Tempo de Execução: {tempo_execucao:.2f} segundos")
-        print(f'Número de itens: {self.num_itens}')
+        print(f'População: {self.tamanho_populacao}')
 
 # Dados de entrada
 data = {
@@ -159,7 +159,7 @@ data = {
               150, 200]
 }
 
-num_itens = [10,15,22]
+num_itens = [22,22,22]
 
 for j in range(0,3):
     for i in range(0,3):
