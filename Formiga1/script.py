@@ -13,8 +13,9 @@ def ler_dados_csv(arquivo_csv):
     return custos
 
 # Definir a função de comprimento (usando os custos extraídos)
-def length(a, b):
-    return custos[a][b]
+def length(a, b, custos):
+    custo = custos[a][b]
+    return custo
 
 # Ler os dados do CSV
 arquivo_csv = 'dados.csv'
@@ -24,7 +25,7 @@ custos = ler_dados_csv(arquivo_csv)
 nodes = list(range(len(custos)))
 
 # Criar o mundo com os nós e a função de comprimento
-world = World(nodes, length)
+world = World(nodes, lambda a, b: length(a, b, custos))
 
 # Configurar o solver
 solver = Solver()
@@ -33,7 +34,8 @@ solver = Solver()
 solution = solver.solve(world)
 
 # Imprimir a solução encontrada
-print("Melhor rota encontrada:")
 for node in solution.tour:
     print(node)
-print(f"Distância total: {solution.distance}")
+
+# print(f"Distância total calculada manualmente: {distancia_total}")
+print(f"Distância total do solver: {solution.distance}")
